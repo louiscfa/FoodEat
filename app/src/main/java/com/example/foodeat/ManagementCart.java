@@ -1,5 +1,7 @@
 package com.example.foodeat;
 
+import com.example.foodeat.Domain.FoodDomain;
+
 import java.util.ArrayList;
 
 public class ManagementCart {

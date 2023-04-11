@@ -171,6 +171,7 @@
         android:text="Populaire" />
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
@@ -305,12 +306,13 @@
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:layout_width="wrap_content"
-            android:layout_height="50dp"
-            android:backgroundTint="@color/order"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#ff5e00"
             android:elevation="3dp"
+            app:maxImageSize="30dp"
             android:src="@drawable/shopping_cart"
-            app:backgroundTint="@color/order"
-            app:layout_anchor="@id/app_bar" />
+            app:layout_anchor="@+id/app_bar"
+            app:layout_anchorGravity="top|center" />
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 

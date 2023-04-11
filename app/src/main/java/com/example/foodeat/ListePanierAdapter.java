@@ -10,6 +10,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.foodeat.Domain.FoodDomain;
+
 import java.util.ArrayList;
 
 public class ListePanierAdapter extends RecyclerView.Adapter<ListePanierAdapter.ViewHolder>{
@@ -32,7 +34,7 @@ public class ListePanierAdapter extends RecyclerView.Adapter<ListePanierAdapter.
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.textViewNomProduit.setText(foodDomains.get(position).getTitle());
-        holder.textViewPrixProduit.setText(String.valueOf(foodDomains.get(position).getfee()));
+        holder.textViewPrixProduit.setText(String.valueOf(foodDomains.get(position).getFee()));
         holder.textViewNombre.setText(String.valueOf(foodDomains.get(position).getNumberInCart()));
         holder.textViewTotalProduit.setText(String.valueOf(foodDomains.get(position).getNumberInCart() * foodDomains.get(position).getFee()*100)/100);
 

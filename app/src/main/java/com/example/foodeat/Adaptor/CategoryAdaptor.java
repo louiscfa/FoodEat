@@ -1,4 +1,4 @@
-package com.example.foodeat.Adapter;
+package com.example.foodeat.Adaptor;
 
 import android.support.constraint.ConstraintLayout;
 import android.view.LayoutInflater;
@@ -17,10 +17,10 @@ import com.example.foodeat.R;
 
 import java.util.ArrayList;
 
-public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHolder> {
+public class CategoryAdaptor extends RecyclerView.Adapter<CategoryAdaptor.ViewHolder> {
     ArrayList<CategoryDomain>categoryDomains;
 
-    public CategoryAdapter(ArrayList<CategoryDomain> categoryDomains) {
+    public CategoryAdaptor(ArrayList<CategoryDomain> categoryDomains) {
         this.categoryDomains = categoryDomains;
     }
 
