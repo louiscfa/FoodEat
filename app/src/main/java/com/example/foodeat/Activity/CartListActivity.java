@@ -1,4 +1,4 @@
-package com.example.foodeat;
+package com.example.foodeat.Activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,9 +12,13 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.foodeat.Helper.ManagementCart;
+import com.example.foodeat.INumberList;
+import com.example.foodeat.CartListAdapter;
+import com.example.foodeat.MainActivity;
+import com.example.foodeat.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-public class PanierActivity extends AppCompatActivity {
+public class CartListActivity extends AppCompatActivity {
     private TextView textViewPrixNourriture, textViewPrixFrais, textViewPrixTax, textViewPrixTotal;
 
     private Button buttonPayer;
@@ -45,7 +49,7 @@ public class PanierActivity extends AppCompatActivity {
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL,false);
         listPanier.setLayoutManager(linearLayoutManager);
-        adapter = new ListePanierAdapter(managementCart.getListCart(), this, new INumberList() {
+        adapter = new CartListAdapter(managementCart.getListCart(), this, new INumberList() {
             @Override
             public void changed() {
                 TotalPanier();
@@ -53,13 +57,13 @@ public class PanierActivity extends AppCompatActivity {
         });
 
         listPanier.setAdapter(adapter);
-        if(managementCart.getListCart.isEmpty()){
+       /* if(managementCart.getListCart.isEmpty()){
             emptyText.setVisibility(View.VISIBLE);
             scrollView.setVisibility(View.GONE);
         }else{
             emptyText.setVisibility(View.GONE);
             scrollView.setVisibility(View.VISIBLE);
-        }
+        }*/
 
         TotalPanier();
         bottomNavigation();

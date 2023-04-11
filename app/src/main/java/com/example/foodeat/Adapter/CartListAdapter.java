@@ -1,4 +1,4 @@
-package com.example.foodeat;
+package com.example.foodeat.Adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -11,16 +11,18 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.foodeat.FoodDomain;
 import com.example.foodeat.Helper.ManagementCart;
+import com.example.foodeat.R;
 
 import java.util.ArrayList;
 
-public class ListePanierAdapter extends RecyclerView.Adapter<ListePanierAdapter.ViewHolder>{
+public class CartListAdapter extends RecyclerView.Adapter<CartListAdapter.ViewHolder>{
     private ArrayList<FoodDomain> foodDomains;
     private ManagementCart managementCart;
     private INumberList listener;
 
-    public ListePanierAdapter(ArrayList<FoodDomain> foodDomains, Context context, ManagementCart managementCart, INumberList listener) {
+    public CartListAdapter(ArrayList<FoodDomain> foodDomains, Context context, INumberList listener) {
         this.foodDomains = foodDomains;
         this.managementCart = new ManagementCart(context);
         this.listener = listener;
