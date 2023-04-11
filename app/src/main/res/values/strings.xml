@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">FoodEat</string>
+    <string name="panier">Panier</string>
+    <string name="items_total">Prix Nourriture :</string>
+    <string name="frais">Frais de livraison :</string>
+    <string name="tax">Tax :</string>
+    <string name="total">Total :</string>
+    <string name="prix">0$</string>
+    <string name="button_panier">Payer</string>
 </resources>
