@@ -10,6 +10,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.foodeat.Helper.ManagementCart;
 
 import java.util.ArrayList;
@@ -43,7 +44,7 @@ public class ListePanierAdapter extends RecyclerView.Adapter<ListePanierAdapter.
 
         Glide.with(holder.itemView.getContext())
                 .load(drawableRessourceId)
-                .into(holder.pic);
+                .into(holder.imageViewProduit);
 
         holder.imageViewPlus.setOnClickListener(new View.OnClickListener() {
             @Override
