@@ -3,8 +3,8 @@ package com.example.foodeat.Helper;
 import android.content.Context;
 import android.widget.Toast;
 
-import com.example.foodeat.FoodDomain;
-import com.example.foodeat.INumberList;
+import com.example.foodeat.Domain.FoodDomain;
+import com.example.foodeat.Listener.INumberList;
 
 import java.util.ArrayList;
 

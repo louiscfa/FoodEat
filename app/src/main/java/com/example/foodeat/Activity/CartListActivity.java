@@ -12,9 +12,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.foodeat.Helper.ManagementCart;
-import com.example.foodeat.INumberList;
-import com.example.foodeat.CartListAdapter;
-import com.example.foodeat.MainActivity;
+import com.example.foodeat.Listener.INumberList;
+import com.example.foodeat.Adapter.CartListAdapter;
+import com.example.foodeat.Activity.MainActivity;
 import com.example.foodeat.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -90,13 +90,13 @@ public class CartListActivity extends AppCompatActivity {
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(PanierActivity.this,PanierActivity.class));
+                startActivity(new Intent(CartListActivity.this,CartListActivity.class));
             }
         });
         homeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(PanierActivity.this, MainActivity.class));
+                startActivity(new Intent(CartListActivity.this, MainActivity.class));
             }
         });
     }

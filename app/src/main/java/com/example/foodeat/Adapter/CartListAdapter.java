@@ -11,8 +11,9 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.example.foodeat.FoodDomain;
+import com.example.foodeat.Domain.FoodDomain;
 import com.example.foodeat.Helper.ManagementCart;
+import com.example.foodeat.Listener.INumberList;
 import com.example.foodeat.R;
 
 import java.util.ArrayList;
