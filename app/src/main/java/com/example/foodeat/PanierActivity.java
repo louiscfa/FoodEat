@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.foodeat.Helper.ManagementCart;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class PanierActivity extends AppCompatActivity {
@@ -44,7 +45,7 @@ public class PanierActivity extends AppCompatActivity {
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL,false);
         listPanier.setLayoutManager(linearLayoutManager);
-        adapter = new CartListAdpater(managementCart.getListCart(), this, new INumberList() {
+        adapter = new ListePanierAdapter(managementCart.getListCart(), this, new INumberList() {
             @Override
             public void changed() {
                 TotalPanier();

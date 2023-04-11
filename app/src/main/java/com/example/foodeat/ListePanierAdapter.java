@@ -10,6 +10,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.foodeat.Helper.ManagementCart;
+
 import java.util.ArrayList;
 
 public class ListePanierAdapter extends RecyclerView.Adapter<ListePanierAdapter.ViewHolder>{
