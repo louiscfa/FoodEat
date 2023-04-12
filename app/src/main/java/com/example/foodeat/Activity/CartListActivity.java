@@ -17,6 +17,8 @@ import com.example.foodeat.Listener.INumberList;
 import com.example.foodeat.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.text.DecimalFormat;
+
 public class CartListActivity extends AppCompatActivity {
     private TextView textViewPrixNourriture, textViewPrixFrais, textViewPrixTax, textViewPrixTotal;
 
@@ -28,14 +30,11 @@ public class CartListActivity extends AppCompatActivity {
 
     private double tax;
 
-    private ManagementCart managementCart;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_panier);
-
-        managementCart = new ManagementCart(this);
 
         textViewPrixNourriture = findViewById(R.id.textViewPrixNourriture);
         textViewPrixFrais = findViewById(R.id.textViewPrixFrais);
@@ -48,7 +47,7 @@ public class CartListActivity extends AppCompatActivity {
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL,false);
         listPanier.setLayoutManager(linearLayoutManager);
-        adapter = new CartListAdaptor(managementCart.getListCart(), this, new INumberList() {
+        adapter = new CartListAdaptor(ManagementCart.getInstane(this).getListCart(), this, new INumberList() {
             @Override
             public void changed() {
                 TotalPanier();
@@ -72,14 +71,14 @@ public class CartListActivity extends AppCompatActivity {
         double percentTax = 0.02;
         double livraison = 2;
 
-        tax = (managementCart.getTotalFee() * percentTax * 100)/100;
-        double totalProduit = managementCart.getTotalFee();
-        double total = managementCart.getTotalFee() + tax + livraison ;
-
-        textViewPrixNourriture.setText(totalProduit + " €");
-        textViewPrixTax.setText(tax + " €");
-        textViewPrixFrais.setText(livraison + " €");
-        textViewPrixTotal.setText(total + " €");
+        tax = (ManagementCart.getInstane(this).getTotalFee() * percentTax * 100)/100;
+        double totalProduit = ManagementCart.getInstane(this).getTotalFee();
+        double total = ManagementCart.getInstane(this).getTotalFee() + tax + livraison ;
+        DecimalFormat numberFormat = new DecimalFormat("#.00");
+        textViewPrixNourriture.setText(numberFormat.format(totalProduit) + " €");
+        textViewPrixTax.setText(numberFormat.format(tax) + " €");
+        textViewPrixFrais.setText(numberFormat.format(livraison) + " €");
+        textViewPrixTotal.setText(numberFormat.format(total) + " €");
     }
 
     private void bottomNavigation(){

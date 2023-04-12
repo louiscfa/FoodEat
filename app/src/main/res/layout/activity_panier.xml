@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical">
 
     <TextView
@@ -19,7 +19,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/listPanier"
         android:layout_width="match_parent"
-        android:layout_height="515dp"
+        android:layout_height="450dp"
         tools:listitem="@layout/item_panier">
 
     </androidx.recyclerview.widget.RecyclerView>
@@ -130,10 +130,10 @@
         android:id="@+id/buttonPayer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:backgroundTint="@color/darkgrey"
-        android:layout_marginTop="20dp"
-        android:layout_marginRight="50dp"
         android:layout_marginLeft="50dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="50dp"
+        android:backgroundTint="@color/darkgrey"
         android:text="@string/button_panier" />
 
     <RelativeLayout

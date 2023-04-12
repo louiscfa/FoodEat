@@ -20,14 +20,11 @@ public class ShowDetailsActivity extends AppCompatActivity {
     private ImageView plusBtn, minusBtn, picFood;
     private FoodDomain object;
     int numberOrder=1;
-    private ManagementCart managementCart;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_details);
-
-        managementCart= new ManagementCart(this);
         initView();
         getBundle();
     }
@@ -67,7 +64,7 @@ public class ShowDetailsActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 object.setNumberInCart(numberOrder);
-                managementCart.insertFood(object);
+                ManagementCart.getInstane(ShowDetailsActivity.this).insertFood(object);
             }
         });
     }
