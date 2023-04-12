@@ -84,5 +84,4 @@ public class CategoryAdaptor extends RecyclerView.Adapter<CategoryAdaptor.ViewHo
         }
 
     }
-
 }

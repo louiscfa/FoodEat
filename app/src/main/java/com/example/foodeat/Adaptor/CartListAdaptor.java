@@ -1,5 +1,6 @@
-package com.example.foodeat;
+package com.example.foodeat.Adaptor;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,16 +11,20 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+import com.example.foodeat.Helper.ManagementCart;
+import com.example.foodeat.Listener.INumberList;
+import com.example.foodeat.R;
 import com.example.foodeat.Domain.FoodDomain;
 
 import java.util.ArrayList;
 
-public class ListePanierAdapter extends RecyclerView.Adapter<ListePanierAdapter.ViewHolder>{
+public class CartListAdaptor extends RecyclerView.Adapter<CartListAdaptor.ViewHolder>{
     private ArrayList<FoodDomain> foodDomains;
     private ManagementCart managementCart;
     private INumberList listener;
 
-    public ListePanierAdapter(ArrayList<FoodDomain> foodDomains, Context context, ManagementCart managementCart, INumberList listener) {
+    public CartListAdaptor(ArrayList<FoodDomain> foodDomains, Context context, INumberList listener) {
         this.foodDomains = foodDomains;
         this.managementCart = new ManagementCart(context);
         this.listener = listener;
@@ -32,18 +37,18 @@ public class ListePanierAdapter extends RecyclerView.Adapter<ListePanierAdapter.
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, @SuppressLint("RecyclerView") int position) {
         holder.textViewNomProduit.setText(foodDomains.get(position).getTitle());
         holder.textViewPrixProduit.setText(String.valueOf(foodDomains.get(position).getFee()));
         holder.textViewNombre.setText(String.valueOf(foodDomains.get(position).getNumberInCart()));
-        holder.textViewTotalProduit.setText(String.valueOf(foodDomains.get(position).getNumberInCart() * foodDomains.get(position).getFee()*100)/100);
+        holder.textViewTotalProduit.setText(String.valueOf((long)(foodDomains.get(position).getNumberInCart() * foodDomains.get(position).getFee()*100)/100));
 
         int drawableRessourceId = holder.itemView.getContext().getResources().getIdentifier(foodDomains.get(position).getPic(),
                 "drawable", holder.itemView.getContext().getPackageName());
 
         Glide.with(holder.itemView.getContext())
                 .load(drawableRessourceId)
-                .into(holder.pic);
+                .into(holder.imageViewProduit);
 
         holder.imageViewPlus.setOnClickListener(new View.OnClickListener() {
             @Override

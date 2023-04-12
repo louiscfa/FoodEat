@@ -1,19 +1,19 @@
-package com.example.foodeat;
+package com.example.foodeat.Activity;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.example.foodeat.Adaptor.CartListAdaptor;
+import com.example.foodeat.Helper.ManagementCart;
+import com.example.foodeat.Listener.INumberList;
+import com.example.foodeat.R;
 
-public class PanierActivity extends AppCompatActivity {
+public class CartListActivity extends AppCompatActivity {
     private TextView textViewPrixNourriture, textViewPrixFrais, textViewPrixTax, textViewPrixTotal;
 
     private Button buttonPayer;
@@ -44,7 +44,7 @@ public class PanierActivity extends AppCompatActivity {
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL,false);
         listPanier.setLayoutManager(linearLayoutManager);
-        adapter = new CartListAdpater(managementCart.getListCart(), this, new INumberList() {
+        adapter = new CartListAdaptor(managementCart.getListCart(), this, new INumberList() {
             @Override
             public void changed() {
                 TotalPanier();
@@ -52,16 +52,16 @@ public class PanierActivity extends AppCompatActivity {
         });
 
         listPanier.setAdapter(adapter);
-        if(managementCart.getListCart.isEmpty()){
+       /* if(managementCart.getListCart.isEmpty()){
             emptyText.setVisibility(View.VISIBLE);
             scrollView.setVisibility(View.GONE);
         }else{
             emptyText.setVisibility(View.GONE);
             scrollView.setVisibility(View.VISIBLE);
-        }
+        }*/
 
         TotalPanier();
-        bottomNavigation();
+        //bottomNavigation();
     }
 
     private void TotalPanier(){
@@ -78,21 +78,21 @@ public class PanierActivity extends AppCompatActivity {
         textViewPrixTotal.setText(total + " €");
     }
 
-    private void bottomNavigation(){
+  /*  private void bottomNavigation(){
         FloatingActionButton floatingActionButton = findViewById(R.id.cardBtn);
         LinearLayout homeBtn = findViewById(R.id.homeBtn);
 
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(PanierActivity.this,PanierActivity.class));
+                startActivity(new Intent(CartListActivity.this,CartListActivity.class));
             }
         });
         homeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(PanierActivity.this, MainActivity.class));
+                startActivity(new Intent(CartListActivity.this, MainActivity.class));
             }
         });
-    }
+    }*/
 }
