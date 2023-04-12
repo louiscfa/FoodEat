@@ -1,5 +1,6 @@
 package com.example.foodeat.Adaptor;
 
+import android.content.Intent;
 import android.support.constraint.ConstraintLayout;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,6 +16,7 @@ import com.bumptech.glide.Glide;
 import com.example.foodeat.Domain.CategoryDomain;
 import com.example.foodeat.Domain.FoodDomain;
 import com.example.foodeat.R;
+import com.example.foodeat.ShowDetailsActivity;
 
 import java.util.ArrayList;
 
@@ -32,7 +34,7 @@ public class PopularAdaptor extends RecyclerView.Adapter<PopularAdaptor.ViewHold
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull PopularAdaptor.ViewHolder holder, int position) {
         holder.title.setText(popularFood.get(position).getTitle());
         holder.fee.setText(String.valueOf(popularFood.get(position).getFee()));
         String picUrl = "";
@@ -40,6 +42,15 @@ public class PopularAdaptor extends RecyclerView.Adapter<PopularAdaptor.ViewHold
         int drawableResourceId=holder.itemView.getContext().getResources().getIdentifier(popularFood.get(position).getPic(), "drawable", holder.itemView.getContext().getPackageName());
 
         Glide.with(holder.itemView.getContext()).load(drawableResourceId).into(holder.pic);
+
+        holder.addBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(holder.itemView.getContext(), ShowDetailsActivity.class);
+                intent.putExtra("object", popularFood.get(position));
+                holder.itemView.getContext().startActivity(intent);
+            }
+        });
     }
 
     @Override
