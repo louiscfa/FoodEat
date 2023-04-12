@@ -1,15 +1,16 @@
-package com.example.foodeat;
+package com.example.foodeat.Activity;
+
+import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.os.Bundle;
-
 import com.example.foodeat.Adaptor.CategoryAdaptor;
 import com.example.foodeat.Adaptor.PopularAdaptor;
 import com.example.foodeat.Domain.CategoryDomain;
 import com.example.foodeat.Domain.FoodDomain;
+import com.example.foodeat.R;
 
 import java.util.ArrayList;
 

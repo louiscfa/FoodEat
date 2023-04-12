@@ -1,5 +1,6 @@
 package com.example.foodeat.Adaptor;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +15,7 @@ import com.bumptech.glide.Glide;
 import com.example.foodeat.Helper.ManagementCart;
 import com.example.foodeat.Listener.INumberList;
 import com.example.foodeat.R;
+import com.example.foodeat.Domain.FoodDomain;
 
 import java.util.ArrayList;
 
@@ -35,11 +37,11 @@ public class CartListAdaptor extends RecyclerView.Adapter<CartListAdaptor.ViewHo
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, @SuppressLint("RecyclerView") int position) {
         holder.textViewNomProduit.setText(foodDomains.get(position).getTitle());
-        holder.textViewPrixProduit.setText(String.valueOf(foodDomains.get(position).getfee()));
+        holder.textViewPrixProduit.setText(String.valueOf(foodDomains.get(position).getFee()));
         holder.textViewNombre.setText(String.valueOf(foodDomains.get(position).getNumberInCart()));
-        holder.textViewTotalProduit.setText(String.valueOf(foodDomains.get(position).getNumberInCart() * foodDomains.get(position).getFee()*100)/100);
+        holder.textViewTotalProduit.setText(String.valueOf((long)(foodDomains.get(position).getNumberInCart() * foodDomains.get(position).getFee()*100)/100));
 
         int drawableRessourceId = holder.itemView.getContext().getResources().getIdentifier(foodDomains.get(position).getPic(),
                 "drawable", holder.itemView.getContext().getPackageName());

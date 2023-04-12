@@ -1,21 +1,17 @@
 package com.example.foodeat.Activity;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.foodeat.Adaptor.CartListAdaptor;
 import com.example.foodeat.Helper.ManagementCart;
 import com.example.foodeat.Listener.INumberList;
-import com.example.foodeat.Adaptor.CartListAdaptor;
 import com.example.foodeat.R;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class CartListActivity extends AppCompatActivity {
     private TextView textViewPrixNourriture, textViewPrixFrais, textViewPrixTax, textViewPrixTotal;
@@ -65,7 +61,7 @@ public class CartListActivity extends AppCompatActivity {
         }*/
 
         TotalPanier();
-        bottomNavigation();
+        //bottomNavigation();
     }
 
     private void TotalPanier(){
@@ -82,7 +78,7 @@ public class CartListActivity extends AppCompatActivity {
         textViewPrixTotal.setText(total + " €");
     }
 
-    private void bottomNavigation(){
+  /*  private void bottomNavigation(){
         FloatingActionButton floatingActionButton = findViewById(R.id.cardBtn);
         LinearLayout homeBtn = findViewById(R.id.homeBtn);
 
@@ -98,5 +94,5 @@ public class CartListActivity extends AppCompatActivity {
                 startActivity(new Intent(CartListActivity.this, MainActivity.class));
             }
         });
-    }
+    }*/
 }

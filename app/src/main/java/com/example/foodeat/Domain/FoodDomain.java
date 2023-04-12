@@ -62,3 +62,4 @@ public class FoodDomain {
         this.numberInCart = numberInCart;
     }
 }
+

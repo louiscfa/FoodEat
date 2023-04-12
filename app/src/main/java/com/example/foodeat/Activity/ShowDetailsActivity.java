@@ -7,7 +7,9 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.foodeat.FoodDomain;
+import com.example.foodeat.Domain.FoodDomain;
+
+import com.bumptech.glide.Glide;
 import com.example.foodeat.Helper.ManagementCart;
 import com.example.foodeat.R;
 
