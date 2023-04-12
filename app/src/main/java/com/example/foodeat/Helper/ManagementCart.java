@@ -3,7 +3,7 @@ package com.example.foodeat.Helper;
 import android.content.Context;
 import android.widget.Toast;
 
-import com.example.foodeat.Listener.INumberList;
+import com.example.foodeat.Domain.FoodDomain;
 
 import java.util.ArrayList;
 
@@ -21,7 +21,7 @@ public class ManagementCart {
         boolean existAlready=false;
         int n=0;
         for(int i = 0; i < listFood.size(); i++) {
-             if(listFood.get(i).getTitle.equals(item.getTitle())){
+             if(listFood.get(i).getTitle().equals(item.getTitle())){
                  existAlready = true;
                  n = i;
                  break;

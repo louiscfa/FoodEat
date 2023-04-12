@@ -1,4 +1,4 @@
-package com.example.foodeat.Adapter;
+package com.example.foodeat.Adaptor;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -17,12 +17,12 @@ import com.example.foodeat.R;
 
 import java.util.ArrayList;
 
-public class CartListAdapter extends RecyclerView.Adapter<CartListAdapter.ViewHolder>{
+public class CartListAdaptor extends RecyclerView.Adapter<CartListAdaptor.ViewHolder>{
     private ArrayList<FoodDomain> foodDomains;
     private ManagementCart managementCart;
     private INumberList listener;
 
-    public CartListAdapter(ArrayList<FoodDomain> foodDomains, Context context, INumberList listener) {
+    public CartListAdaptor(ArrayList<FoodDomain> foodDomains, Context context, INumberList listener) {
         this.foodDomains = foodDomains;
         this.managementCart = new ManagementCart(context);
         this.listener = listener;
