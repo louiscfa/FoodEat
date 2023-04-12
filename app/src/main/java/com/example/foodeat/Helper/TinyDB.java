@@ -31,7 +31,6 @@ import android.preference.PreferenceManager;
 import android.text.TextUtils;
 import android.util.Log;
 
-import com.example.foodeat.Domain.FoodDomain;
 import com.google.gson.Gson;
 
 import java.io.File;
