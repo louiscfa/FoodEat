@@ -64,7 +64,7 @@ public class ShowDetailsActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 object.setNumberInCart(numberOrder);
-                ManagementCart.getInstane(ShowDetailsActivity.this).insertFood(object);
+                ManagementCart.getInstance(ShowDetailsActivity.this).insertFood(object);
             }
         });
     }

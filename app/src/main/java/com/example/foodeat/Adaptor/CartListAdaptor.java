@@ -51,7 +51,7 @@ public class CartListAdaptor extends RecyclerView.Adapter<CartListAdaptor.ViewHo
         holder.imageViewPlus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ManagementCart.getInstane(v.getContext()).ajoutProduit(foodDomains, position, new INumberList() {
+                ManagementCart.getInstance(v.getContext()).ajoutProduit(foodDomains, position, new INumberList() {
                     @Override
                     public void changed() {
                         notifyDataSetChanged();
@@ -64,7 +64,7 @@ public class CartListAdaptor extends RecyclerView.Adapter<CartListAdaptor.ViewHo
         holder.imageViewMoins.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ManagementCart.getInstane(v.getContext()).retireProduit(foodDomains, position, new INumberList() {
+                ManagementCart.getInstance(v.getContext()).retireProduit(foodDomains, position, new INumberList() {
                     @Override
                     public void changed() {
                         notifyDataSetChanged();

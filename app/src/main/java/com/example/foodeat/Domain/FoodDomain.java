@@ -3,11 +3,15 @@ package com.example.foodeat.Domain;
 import java.io.Serializable;
 
 public class FoodDomain implements Serializable {
+    private int id;
     private String title;
     private String pic;
     private String description;
     private Double fee;
     private int numberInCart;
+
+    public FoodDomain() {
+    }
 
     public FoodDomain(String title, String pic, String description, Double fee) {
         this.title = title;
@@ -22,6 +26,23 @@ public class FoodDomain implements Serializable {
         this.description = description;
         this.fee = fee;
         this.numberInCart = numberInCart;
+    }
+
+    public FoodDomain(int id, String title, String pic, String description, Double fee, int numberInCart) {
+        this.id = id;
+        this.title = title;
+        this.pic = pic;
+        this.description = description;
+        this.fee = fee;
+        this.numberInCart = numberInCart;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getTitle() {

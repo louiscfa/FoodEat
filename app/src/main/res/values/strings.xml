@@ -7,4 +7,6 @@
     <string name="total">Total :</string>
     <string name="prix">0$</string>
     <string name="button_panier">Payer</string>
+    <string name="connexion">UserName :</string>
+    <string name="password">Password :</string>
 </resources>

@@ -1,10 +1,7 @@
 package com.example.foodeat.Activity;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,7 +12,6 @@ import com.example.foodeat.Adaptor.CartListAdaptor;
 import com.example.foodeat.Helper.ManagementCart;
 import com.example.foodeat.Listener.INumberList;
 import com.example.foodeat.R;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.text.DecimalFormat;
 
@@ -47,7 +43,7 @@ public class CartListActivity extends AppCompatActivity {
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL,false);
         listPanier.setLayoutManager(linearLayoutManager);
-        adapter = new CartListAdaptor(ManagementCart.getInstane(this).getListCart(), this, new INumberList() {
+        adapter = new CartListAdaptor(ManagementCart.getInstance(this).getListCart(), this, new INumberList() {
             @Override
             public void changed() {
                 TotalPanier();
@@ -64,16 +60,15 @@ public class CartListActivity extends AppCompatActivity {
         }*/
 
         TotalPanier();
-        bottomNavigation();
     }
 
     private void TotalPanier(){
         double percentTax = 0.02;
         double livraison = 2;
 
-        tax = (ManagementCart.getInstane(this).getTotalFee() * percentTax * 100)/100;
-        double totalProduit = ManagementCart.getInstane(this).getTotalFee();
-        double total = ManagementCart.getInstane(this).getTotalFee() + tax + livraison ;
+        tax = (ManagementCart.getInstance(this).getTotalFee() * percentTax * 100)/100;
+        double totalProduit = ManagementCart.getInstance(this).getTotalFee();
+        double total = ManagementCart.getInstance(this).getTotalFee() + tax + livraison ;
         DecimalFormat numberFormat = new DecimalFormat("#.00");
         textViewPrixNourriture.setText(numberFormat.format(totalProduit) + " €");
         textViewPrixTax.setText(numberFormat.format(tax) + " €");
@@ -81,21 +76,4 @@ public class CartListActivity extends AppCompatActivity {
         textViewPrixTotal.setText(numberFormat.format(total) + " €");
     }
 
-    private void bottomNavigation(){
-        FloatingActionButton floatingActionButton = findViewById(R.id.cardBtn);
-        LinearLayout homeBtn = findViewById(R.id.homeBtn);
-
-        floatingActionButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(CartListActivity.this,CartListActivity.class));
-            }
-        });
-        homeBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(CartListActivity.this, MainActivity.class));
-            }
-        });
-    }
 }
