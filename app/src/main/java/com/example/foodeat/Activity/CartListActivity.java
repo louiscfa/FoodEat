@@ -17,6 +17,8 @@ import com.example.foodeat.Listener.INumberList;
 import com.example.foodeat.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.text.DecimalFormat;
+
 public class CartListActivity extends AppCompatActivity {
     private TextView textViewPrixNourriture, textViewPrixFrais, textViewPrixTax, textViewPrixTotal;
 
@@ -75,11 +77,11 @@ public class CartListActivity extends AppCompatActivity {
         tax = (managementCart.getTotalFee() * percentTax * 100)/100;
         double totalProduit = managementCart.getTotalFee();
         double total = managementCart.getTotalFee() + tax + livraison ;
-
-        textViewPrixNourriture.setText(totalProduit + " €");
-        textViewPrixTax.setText(tax + " €");
-        textViewPrixFrais.setText(livraison + " €");
-        textViewPrixTotal.setText(total + " €");
+        DecimalFormat numberFormat = new DecimalFormat("#.00");
+        textViewPrixNourriture.setText(numberFormat.format(totalProduit) + " €");
+        textViewPrixTax.setText(numberFormat.format(tax) + " €");
+        textViewPrixFrais.setText(numberFormat.format(livraison) + " €");
+        textViewPrixTotal.setText(numberFormat.format(total) + " €");
     }
 
     private void bottomNavigation(){
