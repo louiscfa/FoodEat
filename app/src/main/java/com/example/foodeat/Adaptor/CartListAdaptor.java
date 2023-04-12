@@ -12,22 +12,20 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.foodeat.Domain.FoodDomain;
 import com.example.foodeat.Helper.ManagementCart;
 import com.example.foodeat.Listener.INumberList;
 import com.example.foodeat.R;
-import com.example.foodeat.Domain.FoodDomain;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 public class CartListAdaptor extends RecyclerView.Adapter<CartListAdaptor.ViewHolder>{
     private ArrayList<FoodDomain> foodDomains;
-    private ManagementCart managementCart;
     private INumberList listener;
 
     public CartListAdaptor(ArrayList<FoodDomain> foodDomains, Context context, INumberList listener) {
         this.foodDomains = foodDomains;
-        this.managementCart = new ManagementCart(context);
         this.listener = listener;
     }
 
@@ -53,7 +51,7 @@ public class CartListAdaptor extends RecyclerView.Adapter<CartListAdaptor.ViewHo
         holder.imageViewPlus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                managementCart.ajoutProduit(foodDomains, position, new INumberList() {
+                ManagementCart.getInstane(v.getContext()).ajoutProduit(foodDomains, position, new INumberList() {
                     @Override
                     public void changed() {
                         notifyDataSetChanged();
@@ -66,7 +64,7 @@ public class CartListAdaptor extends RecyclerView.Adapter<CartListAdaptor.ViewHo
         holder.imageViewMoins.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                managementCart.retireProduit(foodDomains, position, new INumberList() {
+                ManagementCart.getInstane(v.getContext()).retireProduit(foodDomains, position, new INumberList() {
                     @Override
                     public void changed() {
                         notifyDataSetChanged();
