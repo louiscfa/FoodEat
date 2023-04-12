@@ -1,10 +1,8 @@
 package com.example.foodeat.Adaptor;
 
-<<<<<<< HEAD
 import android.content.Intent;
 import android.support.constraint.ConstraintLayout;
-=======
->>>>>>> d0eaa9b439dbd143fa16a872d4f27e169efb9a68
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,7 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.foodeat.Domain.FoodDomain;
 import com.example.foodeat.R;
-import com.example.foodeat.ShowDetailsActivity;
+import com.example.foodeat.Activity.ShowDetailsActivity;
 
 import java.util.ArrayList;
 
