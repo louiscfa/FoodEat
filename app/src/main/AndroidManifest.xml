@@ -23,6 +23,13 @@
         <activity
             android:name=".Activity.MainActivity">
         </activity>
+        <activity
+            android:name=".Activity.ShowDetailsActivity">
+        </activity>
+        <activity
+            android:name=".Activity.CartListActivity">
+        </activity>
+
     </application>
 
 </manifest>

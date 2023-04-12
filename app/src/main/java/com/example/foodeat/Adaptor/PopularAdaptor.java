@@ -1,12 +1,10 @@
 package com.example.foodeat.Adaptor;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.support.constraint.ConstraintLayout;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -14,9 +12,9 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.foodeat.Activity.ShowDetailsActivity;
 import com.example.foodeat.Domain.FoodDomain;
 import com.example.foodeat.R;
-import com.example.foodeat.Activity.ShowDetailsActivity;
 
 import java.util.ArrayList;
 
@@ -34,7 +32,7 @@ public class PopularAdaptor extends RecyclerView.Adapter<PopularAdaptor.ViewHold
     }
 
     @Override
-    public void onBindViewHolder(@NonNull PopularAdaptor.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull PopularAdaptor.ViewHolder holder, @SuppressLint("RecyclerView") int position) {
         holder.title.setText(popularFood.get(position).getTitle());
         holder.fee.setText(String.valueOf(popularFood.get(position).getFee()));
         String picUrl = "";
