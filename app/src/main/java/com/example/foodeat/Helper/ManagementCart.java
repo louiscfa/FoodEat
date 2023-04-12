@@ -10,15 +10,23 @@ import java.util.ArrayList;
 
 public class ManagementCart {
     private Context context;
-    private TinyDB tinyDB;
+    private ArrayList<FoodDomain> listFood;
 
-    public ManagementCart(Context context) {
+    private static ManagementCart managementCart;
+
+    private ManagementCart(Context context) {
+        listFood = new ArrayList<FoodDomain>();
         this.context = context;
-        this.tinyDB= new TinyDB(context);
+    }
+
+    public static ManagementCart getInstane(Context context){
+        if(managementCart == null){
+            managementCart = new ManagementCart(context);
+        }
+         return managementCart;
     }
 
     public void insertFood(FoodDomain item) {
-        ArrayList<FoodDomain> listFood= getListCart();
         boolean existAlready=false;
         int n=0;
         for(int i = 0; i < listFood.size(); i++) {
@@ -34,17 +42,15 @@ public class ManagementCart {
         }else {
             listFood.add(item);
         }
-        tinyDB.putListObject("CartList", listFood);
         Toast.makeText(context, "Ajouté à votre panier", Toast.LENGTH_SHORT).show();
     }
 
     public ArrayList<FoodDomain> getListCart(){
-        return tinyDB.getListObject("CartList");
+        return listFood;
     }
 
     public void ajoutProduit(ArrayList<FoodDomain> listFood, int position, INumberList listener){
         listFood.get(position).setNumberInCart(listFood.get(position).getNumberInCart()+1);
-        tinyDB.putListObject("CartList", listFood);
         listener.changed();
     }
 
@@ -54,7 +60,6 @@ public class ManagementCart {
         }else{
             listFood.get(position).setNumberInCart(listFood.get(position).getNumberInCart()-1);
         }
-        tinyDB.putListObject("CartList", listFood);
         listener.changed();
     }
 
