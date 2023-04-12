@@ -19,7 +19,7 @@ public class ManagementCart {
         this.context = context;
     }
 
-    public static ManagementCart getInstane(Context context){
+    public static ManagementCart getInstance(Context context){
         if(managementCart == null){
             managementCart = new ManagementCart(context);
         }

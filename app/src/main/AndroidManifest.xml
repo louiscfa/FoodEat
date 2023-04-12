@@ -29,6 +29,10 @@
         <activity
             android:name=".Activity.CartListActivity">
         </activity>
+        <activity
+            android:name=".Activity.ConnexionActivity">
+        </activity>
+
 
     </application>
 
