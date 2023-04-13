@@ -311,7 +311,7 @@
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:backgroundTint="#ff5e00"
+                android:backgroundTint="#A19E9D"
                 android:id="@+id/cardBtn"
                 android:elevation="3dp"
                 app:maxImageSize="30dp"
