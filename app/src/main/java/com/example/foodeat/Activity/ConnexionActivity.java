@@ -32,13 +32,6 @@ public class ConnexionActivity extends AppCompatActivity implements View.OnClick
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_connexion);
 
-        /*users = new ArrayList<User>();
-        users.add(new User("Charles","1234"));
-        users.add(new User("test","test"));*/
-
-        UserRepository.getInstance(this).add(new User("Charles","1234","","","","",""));
-        UserRepository.getInstance(this).add(new User("test","test","","","","",""));
-
         editTextUserName = findViewById(R.id.editTextUserName);
         editTextPassword = findViewById(R.id.editTextPassword);
 
@@ -58,7 +51,11 @@ public class ConnexionActivity extends AppCompatActivity implements View.OnClick
                 boolean connexion = false;
                 for (User user : UserRepository.getInstance(ConnexionActivity.this).getAll()) {
                     if (editTextUserName.getText().toString().equals(user.getUserName()) && editTextPassword.getText().toString().equals(user.getPassword())) {
-                        startActivity(new Intent(ConnexionActivity.this, MainActivity.class));
+                        Intent intent = new Intent(ConnexionActivity.this, MainActivity.class);
+                        intent.putExtra("username",user.getUserName());
+                        intent.putExtra("pic",user.getPic());
+                        startActivity(intent);
+                        finish();
                         connexion = true;
                     }
                 }

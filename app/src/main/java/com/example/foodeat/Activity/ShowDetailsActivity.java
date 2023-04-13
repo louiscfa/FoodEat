@@ -79,4 +79,10 @@ public class ShowDetailsActivity extends AppCompatActivity {
         minusBtn=findViewById(R.id.minusBtn);
         picFood=findViewById(R.id.picFood);
     }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
+    }
 }

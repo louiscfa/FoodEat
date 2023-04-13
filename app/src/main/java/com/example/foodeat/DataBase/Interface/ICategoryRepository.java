@@ -11,4 +11,8 @@ public interface ICategoryRepository {
 
     public ArrayList<CategoryDomain> getAll();
 
+    public boolean isEmpty();
+
+    public CategoryDomain getById(int id);
+
 }

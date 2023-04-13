@@ -76,4 +76,9 @@ public class CartListActivity extends AppCompatActivity {
         textViewPrixTotal.setText(numberFormat.format(total) + " €");
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
+    }
 }

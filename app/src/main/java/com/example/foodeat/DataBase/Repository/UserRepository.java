@@ -69,4 +69,10 @@ public class UserRepository implements IUserRepository {
         c.close();
         return users;
     }
+
+    @Override
+    public boolean isEmpty() {
+        Cursor c= dbm.getReadableDatabase().rawQuery("select * from user",null);
+        return !(c.getCount()>0);
+    }
 }

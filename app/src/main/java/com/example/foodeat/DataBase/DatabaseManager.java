@@ -25,11 +25,11 @@ public class DatabaseManager extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("create table user "+
-                "(id INTEGER, username TEXT, password TEXT, nom TEXT, prenom TEXT, email TEXT, adresse TEXT, pic TEXT);");
+                "(id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL , username TEXT, password TEXT, nom TEXT, prenom TEXT, email TEXT, adresse TEXT, pic TEXT);");
         db.execSQL("create table food "+
-                "(id INTEGER, title TEXT, pic TEXT, description TEXT, fee INTEGER, numberincart FLOAT);");
+                "(id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, title TEXT, pic TEXT, description TEXT, fee INTEGER, numberincart FLOAT, id_category INT);");
         db.execSQL("create table category "+
-                "(id INTEGER, title TEXT, pic TEXT);");
+                "(id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, title TEXT, pic TEXT);");
     }
 
     @Override

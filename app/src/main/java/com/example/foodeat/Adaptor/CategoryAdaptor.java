@@ -1,5 +1,7 @@
 package com.example.foodeat.Adaptor;
 
+import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.support.constraint.ConstraintLayout;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +14,7 @@ import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.foodeat.Activity.ShowCategoryActivity;
 import com.example.foodeat.Domain.CategoryDomain;
 import com.example.foodeat.R;
 
@@ -31,7 +34,7 @@ public class CategoryAdaptor extends RecyclerView.Adapter<CategoryAdaptor.ViewHo
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, @SuppressLint("RecyclerView") int position) {
         holder.categoryName.setText(categoryDomains.get(position).getTitle());
         String picUrl = "";
         switch (position) {
@@ -64,6 +67,15 @@ public class CategoryAdaptor extends RecyclerView.Adapter<CategoryAdaptor.ViewHo
         int drawableResourceId=holder.itemView.getContext().getResources().getIdentifier(picUrl, "drawable", holder.itemView.getContext().getPackageName());
 
         Glide.with(holder.itemView.getContext()).load(drawableResourceId).into(holder.categoryPic);
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(holder.itemView.getContext(), ShowCategoryActivity.class);
+                intent.putExtra("cat", position+1);
+                holder.itemView.getContext().startActivity(intent);
+            }
+        });
     }
 
     @Override

@@ -58,4 +58,26 @@ public class CategoryRepository implements ICategoryRepository {
         c.close();
         return cats;
     }
+
+    @Override
+    public boolean isEmpty() {
+        Cursor c= dbm.getReadableDatabase().rawQuery("select * from category ",null);
+        return !(c.getCount()>0);
+    }
+
+    @Override
+    public CategoryDomain getById(int id) {
+        String[] identifier = {String.valueOf(id)};
+        Cursor c= dbm.getReadableDatabase().rawQuery("select * from category where id=?", identifier);
+        if(c.moveToFirst()) {
+            CategoryDomain cat = new CategoryDomain();
+            cat.setId(c.getInt(0));
+            cat.setTitle(c.getString(1));
+            cat.setPic(c.getString(2));
+            return cat;
+        }
+        else return new CategoryDomain();
+
+    }
+
 }

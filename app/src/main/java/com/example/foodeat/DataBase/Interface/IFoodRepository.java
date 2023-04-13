@@ -11,4 +11,6 @@ public interface IFoodRepository {
 
     public ArrayList<FoodDomain> getAll();
 
+    public boolean isEmpty();
+
 }
