@@ -16,4 +16,6 @@
     <string name="image">Image :</string>
     <string name="inscription1">Pas encore inscrit ? </string>
     <string name="inscription2">Cliquez ici pour vous inscrire!</string>
+    <string name="inscription3">S\'inscrire </string>
+    <string name="validation_profil">Valider les modifications</string>
 </resources>

@@ -15,6 +15,8 @@ import com.example.foodeat.Adaptor.CategoryAdaptor;
 import com.example.foodeat.Adaptor.PopularAdaptor;
 import com.example.foodeat.DataBase.Repository.CategoryRepository;
 import com.example.foodeat.DataBase.Repository.FoodRepository;
+import com.example.foodeat.DataBase.Repository.UserRepository;
+import com.example.foodeat.Domain.User;
 import com.example.foodeat.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -24,17 +26,19 @@ public class MainActivity extends AppCompatActivity {
     private TextView textViewUser;
     private ImageView imageViewProfil;
     private Bundle extras;
+    private User user;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        user = (User) getIntent().getSerializableExtra("user");
         extras = getIntent().getExtras();
 
         textViewUser = findViewById(R.id.textView4);
-        textViewUser.setText("Bienvenue " + extras.getString("username") + " !");
+        textViewUser.setText("Bienvenue " + user.getUserName() + " !");
         imageViewProfil = findViewById(R.id.imageView4);
-        int drawableResourceId=imageViewProfil.getContext().getResources().getIdentifier(extras.get("pic").toString(),
+        int drawableResourceId=imageViewProfil.getContext().getResources().getIdentifier(user.getPic(),
                 "drawable", imageViewProfil.getContext().getPackageName());
         imageViewProfil.setImageResource(drawableResourceId);
         recyclerViewCategory();
@@ -44,12 +48,20 @@ public class MainActivity extends AppCompatActivity {
 
     private void bottomNavigation(){
         FloatingActionButton floatingActionButton = findViewById(R.id.cardBtn);
-        LinearLayout homeBtn = findViewById(R.id.homeBtn);
 
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(MainActivity.this,CartListActivity.class));
+            }
+        });
+        LinearLayout buttonProfil = findViewById(R.id.profileBtn);
+        buttonProfil.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this,ProfilActivity.class);
+                intent.putExtra("user",user);
+                startActivity(intent);
             }
         });
     }
@@ -69,5 +81,18 @@ public class MainActivity extends AppCompatActivity {
 
         adapter2=new PopularAdaptor(FoodRepository.getInstance(this).getAll());
         recyclerViewPopularList.setAdapter(adapter2);
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        startActivity(new Intent(MainActivity.this, ConnexionActivity.class));
+        finish();
+    }
+
+    @Override
+    protected void onPostResume() {
+        super.onPostResume();
+        user = UserRepository.getInstance(this).getById(user.getId());
     }
 }
