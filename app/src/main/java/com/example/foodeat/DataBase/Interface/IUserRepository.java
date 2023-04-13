@@ -14,4 +14,8 @@ public interface IUserRepository {
 
     public boolean isEmpty();
 
+    public boolean update(User user);
+
+    public User getById(int id);
+
 }

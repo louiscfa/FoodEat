@@ -164,10 +164,10 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/buttonInscription"
+        android:id="@+id/buttonValidation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/grey_button2"
         app:backgroundTint="@color/darkgrey"
-        android:text="@string/inscription3" />
+        android:text="@string/validation_profil" />
 </LinearLayout>

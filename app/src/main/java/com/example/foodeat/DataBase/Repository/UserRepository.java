@@ -75,4 +75,39 @@ public class UserRepository implements IUserRepository {
         Cursor c= dbm.getReadableDatabase().rawQuery("select * from user",null);
         return !(c.getCount()>0);
     }
+
+    @Override
+    public boolean update(User user) {
+        ContentValues values = new ContentValues();
+        values.put("username", user.getUserName());
+        values.put("password", user.getPassword());
+        values.put("nom", user.getNom());
+        values.put("prenom", user.getPrenom());
+        values.put("email", user.getEmail());
+        values.put("adresse", user.getAdresse());
+        values.put("pic",user.getPic());
+
+        long line = dbm.getWritableDatabase().update("user", values, "id=?", new String[]{String.valueOf(user.getId())});
+        return line != 0;
+    }
+
+    @Override
+    public User getById(int id) {
+        String[] identifier = {String.valueOf(id)};
+        Cursor c= dbm.getReadableDatabase().rawQuery("select * from user where id=?", identifier);
+        if(c.moveToFirst()) {
+            User user = new User();
+            user.setId(c.getInt(0));
+            user.setUserName(c.getString(1));
+            user.setPassword(c.getString(2));
+            user.setNom(c.getString(3));
+            user.setPrenom(c.getString(4));
+            user.setEmail(c.getString(5));
+            user.setAdresse(c.getString(6));
+            user.setPic(c.getString(7));
+            return user;
+        }
+        else return new User();
+
+    }
 }

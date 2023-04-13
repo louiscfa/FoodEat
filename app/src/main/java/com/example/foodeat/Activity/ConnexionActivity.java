@@ -52,8 +52,7 @@ public class ConnexionActivity extends AppCompatActivity implements View.OnClick
                 for (User user : UserRepository.getInstance(ConnexionActivity.this).getAll()) {
                     if (editTextUserName.getText().toString().equals(user.getUserName()) && editTextPassword.getText().toString().equals(user.getPassword())) {
                         Intent intent = new Intent(ConnexionActivity.this, MainActivity.class);
-                        intent.putExtra("username",user.getUserName());
-                        intent.putExtra("pic",user.getPic());
+                        intent.putExtra("user",user);
                         startActivity(intent);
                         finish();
                         connexion = true;
