@@ -11,12 +11,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.foodeat.Adaptor.CategoryAdaptor;
 import com.example.foodeat.Adaptor.PopularAdaptor;
+import com.example.foodeat.DataBase.Repository.CategoryRepository;
+import com.example.foodeat.DataBase.Repository.FoodRepository;
 import com.example.foodeat.Domain.CategoryDomain;
 import com.example.foodeat.Domain.FoodDomain;
 import com.example.foodeat.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-
-import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
     private RecyclerView.Adapter adapter, adapter2;
@@ -40,12 +40,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(MainActivity.this,CartListActivity.class));
-            }
-        });
-        homeBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, MainActivity.class));
+                finish();
             }
         });
     }
@@ -55,14 +50,20 @@ public class MainActivity extends AppCompatActivity {
         recyclerViewCategoryList= findViewById(R.id.recyclerView);
         recyclerViewCategoryList.setLayoutManager(linearLayoutManager);
 
-        ArrayList<CategoryDomain> category = new ArrayList<>();
+        /*ArrayList<CategoryDomain> category = new ArrayList<>();
         category.add(new CategoryDomain("Pizza", "cat_1"));
         category.add(new CategoryDomain("Burger", "cat_2"));
         category.add(new CategoryDomain("HotDog", "cat_3"));
         category.add(new CategoryDomain("Drink", "cat_4"));
-        category.add(new CategoryDomain("Donut", "cat_5"));
+        category.add(new CategoryDomain("Donut", "cat_5"));*/
 
-        adapter = new CategoryAdaptor(category);
+        CategoryRepository.getInstance(this).add(new CategoryDomain("Pizza", "cat_1"));
+        CategoryRepository.getInstance(this).add(new CategoryDomain("Burger", "cat_2"));
+        CategoryRepository.getInstance(this).add(new CategoryDomain("HotDog", "cat_3"));
+        CategoryRepository.getInstance(this).add(new CategoryDomain("Drink", "cat_4"));
+        CategoryRepository.getInstance(this).add(new CategoryDomain("Donut", "cat_5"));
+
+        adapter = new CategoryAdaptor(CategoryRepository.getInstance(this).getAll());
         recyclerViewCategoryList.setAdapter(adapter);
     }
     private void recyclerViewPopular(){
@@ -70,13 +71,15 @@ public class MainActivity extends AppCompatActivity {
         recyclerViewPopularList=findViewById(R.id.recyclerView2);
         recyclerViewPopularList.setLayoutManager(linearLayoutManager);
 
-        ArrayList<FoodDomain> foodList=new ArrayList<>();
+       /* ArrayList<FoodDomain> foodList=new ArrayList<>();
         foodList.add(new FoodDomain("Pepperoni pizza", "pop_1", "morceaux de pepperoni, mozzarella, origan, poivre noir, sauce tomate", 9.76));
         foodList.add(new FoodDomain("Burger au Fromage", "pop_2", "boeuf, Gouda, sauce burger, laitue, tomate", 8.00));
         foodList.add(new FoodDomain("Pizza végétarienne", "pop_3", "Huile d'olive, huile végétale, tomate cerise", 8.50));
-
-
-        adapter2=new PopularAdaptor(foodList);
+        */
+        FoodRepository.getInstance(this).add(new FoodDomain("Pepperoni pizza", "pop_1", "morceaux de pepperoni, mozzarella, origan, poivre noir, sauce tomate", 9.76));
+        FoodRepository.getInstance(this).add(new FoodDomain("Burger au Fromage", "pop_2", "boeuf, Gouda, sauce burger, laitue, tomate", 8.00));
+        FoodRepository.getInstance(this).add(new FoodDomain("Pizza végétarienne", "pop_3", "Huile d'olive, huile végétale, tomate cerise", 8.50));
+        adapter2=new PopularAdaptor(FoodRepository.getInstance(this).getAll());
         recyclerViewPopularList.setAdapter(adapter2);
     }
 }
