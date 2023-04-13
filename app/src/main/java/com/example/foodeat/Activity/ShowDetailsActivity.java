@@ -1,5 +1,7 @@
 package com.example.foodeat.Activity;
 
+import android.graphics.ColorMatrix;
+import android.graphics.ColorMatrixColorFilter;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -70,13 +72,24 @@ public class ShowDetailsActivity extends AppCompatActivity {
     }
 
     private void initView() {
+        float[] colorTransform = {
+                0.33f, 0.33f, 0.33f, 0, 0,
+                0.33f, 0.33f, 0.33f, 0, 0,
+                0.33f, 0.33f, 0.33f, 0, 0,
+                0, 0, 0, 1, 0 };
+        ColorMatrix colorMatrix = new ColorMatrix();
+        colorMatrix.setSaturation(0f); //Remove Colour
+        colorMatrix.set(colorTransform); //Apply the Red
+        ColorMatrixColorFilter filter = new ColorMatrixColorFilter(colorMatrix);
         addToCartBtn=findViewById(R.id.addToCartBtn);
         titleTxt=findViewById(R.id.titleTxt);
         feeTxt=findViewById(R.id.priceTxt);
         descriptionTxt=findViewById(R.id.descriptionTxt);
         numberOrderTxt=findViewById(R.id.numberOrderTxt);
         plusBtn=findViewById(R.id.plusBtn);
+        plusBtn.setColorFilter(filter);
         minusBtn=findViewById(R.id.minusBtn);
+        minusBtn.setColorFilter(filter);
         picFood=findViewById(R.id.picFood);
     }
 

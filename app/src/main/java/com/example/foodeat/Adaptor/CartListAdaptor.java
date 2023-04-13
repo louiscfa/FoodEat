@@ -2,6 +2,8 @@ package com.example.foodeat.Adaptor;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.graphics.ColorMatrix;
+import android.graphics.ColorMatrixColorFilter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -90,9 +92,20 @@ public class CartListAdaptor extends RecyclerView.Adapter<CartListAdaptor.ViewHo
             textViewNombre = itemView.findViewById(R.id.textViewNombre);
             textViewTotalProduit = itemView.findViewById(R.id.textViewTotalProduit);
 
+            float[] colorTransform = {
+                    0.33f, 0.33f, 0.33f, 0, 0,
+                    0.33f, 0.33f, 0.33f, 0, 0,
+                    0.33f, 0.33f, 0.33f, 0, 0,
+                    0, 0, 0, 1, 0 };
+            ColorMatrix colorMatrix = new ColorMatrix();
+            colorMatrix.setSaturation(0f); //Remove Colour
+            colorMatrix.set(colorTransform); //Apply the Red
+            ColorMatrixColorFilter filter = new ColorMatrixColorFilter(colorMatrix);
             imageViewProduit = itemView.findViewById(R.id.imageViewProduit);
             imageViewMoins = itemView.findViewById(R.id.imageViewMoins);
+            imageViewMoins.setColorFilter(filter);
             imageViewPlus = itemView.findViewById(R.id.imageViewPlus);
+            imageViewPlus.setColorFilter(filter);
         }
     }
 }
