@@ -3,7 +3,9 @@ package com.example.foodeat.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -13,20 +15,28 @@ import com.example.foodeat.Adaptor.CategoryAdaptor;
 import com.example.foodeat.Adaptor.PopularAdaptor;
 import com.example.foodeat.DataBase.Repository.CategoryRepository;
 import com.example.foodeat.DataBase.Repository.FoodRepository;
-import com.example.foodeat.Domain.CategoryDomain;
-import com.example.foodeat.Domain.FoodDomain;
 import com.example.foodeat.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class MainActivity extends AppCompatActivity {
     private RecyclerView.Adapter adapter, adapter2;
     private RecyclerView recyclerViewCategoryList, recyclerViewPopularList;
-
+    private TextView textViewUser;
+    private ImageView imageViewProfil;
+    private Bundle extras;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        extras = getIntent().getExtras();
+
+        textViewUser = findViewById(R.id.textView4);
+        textViewUser.setText("Bienvenue " + extras.getString("username") + " !");
+        imageViewProfil = findViewById(R.id.imageView4);
+        int drawableResourceId=imageViewProfil.getContext().getResources().getIdentifier(extras.get("pic").toString(),
+                "drawable", imageViewProfil.getContext().getPackageName());
+        imageViewProfil.setImageResource(drawableResourceId);
         recyclerViewCategory();
         recyclerViewPopular();
         bottomNavigation();
@@ -40,7 +50,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(MainActivity.this,CartListActivity.class));
-                finish();
             }
         });
     }
@@ -50,19 +59,6 @@ public class MainActivity extends AppCompatActivity {
         recyclerViewCategoryList= findViewById(R.id.recyclerView);
         recyclerViewCategoryList.setLayoutManager(linearLayoutManager);
 
-        /*ArrayList<CategoryDomain> category = new ArrayList<>();
-        category.add(new CategoryDomain("Pizza", "cat_1"));
-        category.add(new CategoryDomain("Burger", "cat_2"));
-        category.add(new CategoryDomain("HotDog", "cat_3"));
-        category.add(new CategoryDomain("Drink", "cat_4"));
-        category.add(new CategoryDomain("Donut", "cat_5"));*/
-
-        CategoryRepository.getInstance(this).add(new CategoryDomain("Pizza", "cat_1"));
-        CategoryRepository.getInstance(this).add(new CategoryDomain("Burger", "cat_2"));
-        CategoryRepository.getInstance(this).add(new CategoryDomain("HotDog", "cat_3"));
-        CategoryRepository.getInstance(this).add(new CategoryDomain("Drink", "cat_4"));
-        CategoryRepository.getInstance(this).add(new CategoryDomain("Donut", "cat_5"));
-
         adapter = new CategoryAdaptor(CategoryRepository.getInstance(this).getAll());
         recyclerViewCategoryList.setAdapter(adapter);
     }
@@ -71,14 +67,6 @@ public class MainActivity extends AppCompatActivity {
         recyclerViewPopularList=findViewById(R.id.recyclerView2);
         recyclerViewPopularList.setLayoutManager(linearLayoutManager);
 
-       /* ArrayList<FoodDomain> foodList=new ArrayList<>();
-        foodList.add(new FoodDomain("Pepperoni pizza", "pop_1", "morceaux de pepperoni, mozzarella, origan, poivre noir, sauce tomate", 9.76));
-        foodList.add(new FoodDomain("Burger au Fromage", "pop_2", "boeuf, Gouda, sauce burger, laitue, tomate", 8.00));
-        foodList.add(new FoodDomain("Pizza végétarienne", "pop_3", "Huile d'olive, huile végétale, tomate cerise", 8.50));
-        */
-        FoodRepository.getInstance(this).add(new FoodDomain("Pepperoni pizza", "pop_1", "morceaux de pepperoni, mozzarella, origan, poivre noir, sauce tomate", 9.76));
-        FoodRepository.getInstance(this).add(new FoodDomain("Burger au Fromage", "pop_2", "boeuf, Gouda, sauce burger, laitue, tomate", 8.00));
-        FoodRepository.getInstance(this).add(new FoodDomain("Pizza végétarienne", "pop_3", "Huile d'olive, huile végétale, tomate cerise", 8.50));
         adapter2=new PopularAdaptor(FoodRepository.getInstance(this).getAll());
         recyclerViewPopularList.setAdapter(adapter2);
     }

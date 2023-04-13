@@ -12,4 +12,6 @@ public interface IUserRepository {
 
     public ArrayList<User> getAll();
 
+    public boolean isEmpty();
+
 }

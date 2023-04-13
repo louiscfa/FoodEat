@@ -10,31 +10,36 @@ public class FoodDomain implements Serializable {
     private Double fee;
     private int numberInCart;
 
+    private int id_category;
+
     public FoodDomain() {
     }
 
-    public FoodDomain(String title, String pic, String description, Double fee) {
+    public FoodDomain(String title, String pic, String description, Double fee,int id_category) {
         this.title = title;
         this.pic = pic;
         this.description = description;
         this.fee = fee;
+        this.id_category = id_category;
     }
 
-    public FoodDomain(String title, String pic, String description, Double fee, int numberInCart) {
+    public FoodDomain(String title, String pic, String description, Double fee, int numberInCart,int id_category) {
         this.title = title;
         this.pic = pic;
         this.description = description;
         this.fee = fee;
         this.numberInCart = numberInCart;
+        this.id_category = id_category;
     }
 
-    public FoodDomain(int id, String title, String pic, String description, Double fee, int numberInCart) {
+    public FoodDomain(int id, String title, String pic, String description, Double fee, int numberInCart,int id_cateigory) {
         this.id = id;
         this.title = title;
         this.pic = pic;
         this.description = description;
         this.fee = fee;
         this.numberInCart = numberInCart;
+        this.id_category = id_category;
     }
 
     public int getId() {
@@ -83,6 +88,14 @@ public class FoodDomain implements Serializable {
 
     public void setNumberInCart(int numberInCart) {
         this.numberInCart = numberInCart;
+    }
+
+    public int getId_category() {
+        return id_category;
+    }
+
+    public void setId_category(int id_category) {
+        this.id_category = id_category;
     }
 }
 

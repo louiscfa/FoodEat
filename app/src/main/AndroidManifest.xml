@@ -35,6 +35,9 @@
         <activity
             android:name=".Activity.InscriptionActivity">
         </activity>
+        <activity
+            android:name=".Activity.ShowCategoryActivity">
+        </activity>
 
 
     </application>

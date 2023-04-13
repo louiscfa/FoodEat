@@ -34,6 +34,7 @@ public class FoodRepository implements IFoodRepository {
         values.put("description", food.getDescription());
         values.put("fee", food.getFee());
         values.put("numberincart", food.getNumberInCart());
+        values.put("id_category",food.getId_category());
         long line= dbm.getWritableDatabase().insert("food", null, values);
         return line != 0;
     }
@@ -58,10 +59,17 @@ public class FoodRepository implements IFoodRepository {
             food.setDescription(c.getString(3));
             food.setFee(c.getDouble(4));
             food.setNumberInCart(c.getInt(5));
+            food.setId_category(c.getInt(6));
             foods.add(food);
             c.moveToNext();
         }
         c.close();
         return foods;
+    }
+
+    @Override
+    public boolean isEmpty() {
+        Cursor c= dbm.getReadableDatabase().rawQuery("select * from food",null);
+        return !(c.getCount()>0);
     }
 }

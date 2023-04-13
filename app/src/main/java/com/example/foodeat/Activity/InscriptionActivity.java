@@ -49,6 +49,7 @@ public class InscriptionActivity extends AppCompatActivity implements View.OnCli
                     editTextAdresse.getText().toString(),editTextPic.getText().toString()));
             Toast.makeText(this, "Inscription réussi!", Toast.LENGTH_SHORT).show();
             startActivity(new Intent(InscriptionActivity.this, ConnexionActivity.class));
+            finish();
         }
         else{
             Toast.makeText(this, "Veuillez saisir toutes les informations!", Toast.LENGTH_SHORT).show();
