@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,6 +21,8 @@ public class ConnexionActivity extends AppCompatActivity implements View.OnClick
     private EditText editTextUserName, editTextPassword;
 
     private Button buttonConnexion;
+
+    private TextView textViewInscriptionLien;
 
     private ArrayList<User> users;
 
@@ -41,22 +44,32 @@ public class ConnexionActivity extends AppCompatActivity implements View.OnClick
 
         buttonConnexion = findViewById(R.id.buttonConnexion);
         buttonConnexion.setOnClickListener(this);
+
+        textViewInscriptionLien = findViewById(R.id.textViewInscriptionLien);
+        textViewInscriptionLien.setOnClickListener(this);
+
+
     }
 
     @Override
     public void onClick(View v) {
-        if(!editTextUserName.getText().toString().equals("") && !editTextPassword.getText().toString().equals("")){
-            boolean connexion = false;
-            for(User user : UserRepository.getInstance(ConnexionActivity.this).getAll()) {
-                if (editTextUserName.getText().toString().equals(user.getUserName()) && editTextPassword.getText().toString().equals(user.getPassword())) {
-                    startActivity(new Intent(ConnexionActivity.this, MainActivity.class));
-                    connexion = true;
+        if (v.equals(buttonConnexion)) {
+            if (!editTextUserName.getText().toString().equals("") && !editTextPassword.getText().toString().equals("")) {
+                boolean connexion = false;
+                for (User user : UserRepository.getInstance(ConnexionActivity.this).getAll()) {
+                    if (editTextUserName.getText().toString().equals(user.getUserName()) && editTextPassword.getText().toString().equals(user.getPassword())) {
+                        startActivity(new Intent(ConnexionActivity.this, MainActivity.class));
+                        connexion = true;
+                    }
                 }
+                if (!connexion)
+                    Toast.makeText(ConnexionActivity.this, "Nom d'utilisateur ou mot de passe invalide", Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(ConnexionActivity.this, "Veuillez saisir un nom d'utilisateur et un mot de passe", Toast.LENGTH_SHORT).show();
             }
-            if(!connexion)
-                Toast.makeText(ConnexionActivity.this, "Nom d'utilisateur ou mot de passe invalide", Toast.LENGTH_SHORT).show();
-        }else{
-            Toast.makeText(ConnexionActivity.this, "Veuillez saisir un nom d'utilisateur et un mot de passe", Toast.LENGTH_SHORT).show();
+        }
+        else{
+            startActivity(new Intent(ConnexionActivity.this, InscriptionActivity.class));
         }
     }
 }
