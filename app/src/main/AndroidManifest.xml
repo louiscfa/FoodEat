@@ -32,6 +32,9 @@
         <activity
             android:name=".Activity.ConnexionActivity">
         </activity>
+        <activity
+            android:name=".Activity.InscriptionActivity">
+        </activity>
 
 
     </application>

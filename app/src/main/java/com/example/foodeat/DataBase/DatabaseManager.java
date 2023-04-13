@@ -25,7 +25,7 @@ public class DatabaseManager extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("create table user "+
-                "(id INTEGER, username TEXT, password TEXT, nom TEXT, prenom TEXT, email TEXT, adresse TEXT);");
+                "(id INTEGER, username TEXT, password TEXT, nom TEXT, prenom TEXT, email TEXT, adresse TEXT, pic TEXT);");
         db.execSQL("create table food "+
                 "(id INTEGER, title TEXT, pic TEXT, description TEXT, fee INTEGER, numberincart FLOAT);");
         db.execSQL("create table category "+
