@@ -1,5 +1,5 @@
 package com.example.foodeat.Listener;
 
 public interface INumberList {
-    void changed();
+    public void changed();
 }

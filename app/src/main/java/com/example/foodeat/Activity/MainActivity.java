@@ -94,5 +94,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onPostResume() {
         super.onPostResume();
         user = UserRepository.getInstance(this).getById(user.getId());
+        textViewUser.setText("Bienvenue " + user.getUserName() + " !");
+        int drawableResourceId=imageViewProfil.getContext().getResources().getIdentifier(user.getPic(),
+                "drawable", imageViewProfil.getContext().getPackageName());
+        imageViewProfil.setImageResource(drawableResourceId);
     }
 }

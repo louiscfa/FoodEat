@@ -22,7 +22,7 @@ import com.example.foodeat.R;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 
-public class CartListAdaptor extends RecyclerView.Adapter<CartListAdaptor.ViewHolder>{
+public class CartListAdaptor extends RecyclerView.Adapter<CartListAdaptor.ViewHolder> {
     private ArrayList<FoodDomain> foodDomains;
     private INumberList listener;
 
