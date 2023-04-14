@@ -14,8 +14,6 @@ import com.example.foodeat.DataBase.Repository.UserRepository;
 import com.example.foodeat.Domain.User;
 import com.example.foodeat.R;
 
-import java.util.ArrayList;
-
 public class ConnexionActivity extends AppCompatActivity implements View.OnClickListener {
 
     private EditText editTextUserName, editTextPassword;
@@ -24,7 +22,7 @@ public class ConnexionActivity extends AppCompatActivity implements View.OnClick
 
     private TextView textViewInscriptionLien;
 
-    private ArrayList<User> users;
+
 
 
     @Override
